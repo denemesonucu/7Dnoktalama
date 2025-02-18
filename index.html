@@ -1,0 +1,3016 @@
+
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title> OKAN GÖKHAN </title>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+            color: #2C3E50;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            min-height: 100vh;
+            box-sizing: border-box;
+        }
+
+        .container {
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            max-width: 800px;
+            width: 90%;
+            box-sizing: border-box;
+            overflow: hidden;
+        }
+
+        h1 {
+            color: #2C3E50;
+            font-size: 24px;
+            margin-bottom: 15px;
+        }
+
+        input[type="text"] {
+            padding: 12px;
+            font-size: 16px;
+            width: 100%;
+            max-width: 100%;
+            margin-bottom: 15px;
+            border: 1px solid #cccccc;
+            border-radius: 6px;
+            box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.05);
+            box-sizing: border-box;
+        }
+
+        button {
+            padding: 12px;
+            font-size: 16px;
+            background-color: #F39C12;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            width: 100%;
+            max-width: 100%;
+        }
+
+        button:hover {
+            background-color: #e67e22;
+        }
+
+        .result-table {
+            margin-top: 20px;
+            width: 100%;
+            border-collapse: collapse;
+            border: 1px solid #eeeeee;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            border-radius: 6px;
+            table-layout: fixed;
+            word-wrap: break-word;
+            overflow: hidden;
+        }
+
+        .result-table th, .result-table td {
+            padding: 8px;
+            text-align: center;
+            font-size: 14px;
+            height: 45px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .result-table th {
+            background-color: #2C3E50;
+            color: white;
+            font-weight: 600;
+        }
+
+        .result-table tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        
+.correct-answer { background-color: #28a745; color: white; font-weight: bold; border-bottom: 2px solid white; }
+.wrong-answer { background-color: #dc3545; color: white; font-weight: bold; border-bottom: 2px solid white; }
+.empty-answer { background-color: #ffc107; color: white; font-weight: bold; border-bottom: 2px solid white; }
+.question-cell { background-color: #F39C12; color: white; font-weight: bold; border-bottom: 2px solid white; }
+.footer {
+            margin-top: 20px;
+            font-size: 12px;
+            color: #95a5a6;
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+	<h1> OKAN GÖKHAN </h1>
+        <h1> TÜRKÇE DERSİ DENEME SONUÇLARI </h1>
+        <input type="text" id="studentNoInput" placeholder="Öğrenci Numarası">
+        <button onclick="fetchStudentData()">Sonuçları Gör</button>
+        <div id="studentData" class="result"></div>
+
+        <div class="footer">
+            <p>© 2024 OG Öğrenci Bilgi Sistemi. Tüm Hakları Saklıdır.</p>
+        </div>
+    </div>
+
+    <script>
+       const studentData = {
+    "301": {
+        "name": "AHSEN YENİAY",
+        "student_no": 301,
+        "totals": {
+            "dogru": 14,
+            "yanlis": 6,
+            "net": 14
+        },
+        "answers": [
+            {
+                "soru": 1,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 2,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 3,
+                "durum": "YANLIŞ"
+            },
+            {
+                "soru": 4,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 5,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 6,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 7,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 8,
+                "durum": "YANLIŞ"
+            },
+            {
+                "soru": 9,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 10,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 11,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 12,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 13,
+                "durum": "YANLIŞ"
+            },
+            {
+                "soru": 14,
+                "durum": "YANLIŞ"
+            },
+            {
+                "soru": 15,
+                "durum": "YANLIŞ"
+            },
+            {
+                "soru": 16,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 17,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 18,
+                "durum": "YANLIŞ"
+            },
+            {
+                "soru": 19,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 20,
+                "durum": "DOĞRU"
+            }
+        ]
+    },
+    "642": {
+        "name": "AZRA ERTEM",
+        "student_no": 642,
+        "totals": {
+            "dogru": 8,
+            "yanlis": 12,
+            "net": 8
+        },
+        "answers": [
+            {
+                "soru": 1,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 2,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 3,
+                "durum": "YANLIŞ"
+            },
+            {
+                "soru": 4,
+                "durum": "YANLIŞ"
+            },
+            {
+                "soru": 5,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 6,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 7,
+                "durum": "YANLIŞ"
+            },
+            {
+                "soru": 8,
+                "durum": "YANLIŞ"
+            },
+            {
+                "soru": 9,
+                "durum": "YANLIŞ"
+            },
+            {
+                "soru": 10,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 11,
+                "durum": "YANLIŞ"
+            },
+            {
+                "soru": 12,
+                "durum": "YANLIŞ"
+            },
+            {
+                "soru": 13,
+                "durum": "YANLIŞ"
+            },
+            {
+                "soru": 14,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 15,
+                "durum": "YANLIŞ"
+            },
+            {
+                "soru": 16,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 17,
+                "durum": "YANLIŞ"
+            },
+            {
+                "soru": 18,
+                "durum": "YANLIŞ"
+            },
+            {
+                "soru": 19,
+                "durum": "YANLIŞ"
+            },
+            {
+                "soru": 20,
+                "durum": "DOĞRU"
+            }
+        ]
+    },
+    "647": {
+        "name": "AZRA YALÇINKAYA",
+        "student_no": 647,
+        "totals": {
+            "dogru": 13,
+            "yanlis": 7,
+            "net": 13
+        },
+        "answers": [
+            {
+                "soru": 1,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 2,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 3,
+                "durum": "YANLIŞ"
+            },
+            {
+                "soru": 4,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 5,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 6,
+                "durum": "YANLIŞ"
+            },
+            {
+                "soru": 7,
+                "durum": "YANLIŞ"
+            },
+            {
+                "soru": 8,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 9,
+                "durum": "YANLIŞ"
+            },
+            {
+                "soru": 10,
+                "durum": "YANLIŞ"
+            },
+            {
+                "soru": 11,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 12,
+                "durum": "YANLIŞ"
+            },
+            {
+                "soru": 13,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 14,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 15,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 16,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 17,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 18,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 19,
+                "durum": "YANLIŞ"
+            },
+            {
+                "soru": 20,
+                "durum": "DOĞRU"
+            }
+        ]
+    },
+    "326": {
+        "name": "AİŞEGÜL KAHYAOĞLU ",
+        "student_no": 326,
+        "totals": {
+            "dogru": 16,
+            "yanlis": 4,
+            "net": 16
+        },
+        "answers": [
+            {
+                "soru": 1,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 2,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 3,
+                "durum": "YANLIŞ"
+            },
+            {
+                "soru": 4,
+                "durum": "YANLIŞ"
+            },
+            {
+                "soru": 5,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 6,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 7,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 8,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 9,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 10,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 11,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 12,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 13,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 14,
+                "durum": "YANLIŞ"
+            },
+            {
+                "soru": 15,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 16,
+                "durum": "YANLIŞ"
+            },
+            {
+                "soru": 17,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 18,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 19,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 20,
+                "durum": "DOĞRU"
+            }
+        ]
+    },
+    "340": {
+        "name": "BİLGE SU BİLGİN",
+        "student_no": 340,
+        "totals": {
+            "dogru": 16,
+            "yanlis": 4,
+            "net": 16
+        },
+        "answers": [
+            {
+                "soru": 1,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 2,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 3,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 4,
+                "durum": "YANLIŞ"
+            },
+            {
+                "soru": 5,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 6,
+                "durum": "YANLIŞ"
+            },
+            {
+                "soru": 7,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 8,
+                "durum": "YANLIŞ"
+            },
+            {
+                "soru": 9,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 10,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 11,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 12,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 13,
+                "durum": "YANLIŞ"
+            },
+            {
+                "soru": 14,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 15,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 16,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 17,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 18,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 19,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 20,
+                "durum": "DOĞRU"
+            }
+        ]
+    },
+    "648": {
+        "name": "EBRAR DURMUŞ",
+        "student_no": 648,
+        "totals": {
+            "dogru": 8,
+            "yanlis": 12,
+            "net": 8
+        },
+        "answers": [
+            {
+                "soru": 1,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 2,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 3,
+                "durum": "YANLIŞ"
+            },
+            {
+                "soru": 4,
+                "durum": "YANLIŞ"
+            },
+            {
+                "soru": 5,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 6,
+                "durum": "YANLIŞ"
+            },
+            {
+                "soru": 7,
+                "durum": "YANLIŞ"
+            },
+            {
+                "soru": 8,
+                "durum": "YANLIŞ"
+            },
+            {
+                "soru": 9,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 10,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 11,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 12,
+                "durum": "YANLIŞ"
+            },
+            {
+                "soru": 13,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 14,
+                "durum": "YANLIŞ"
+            },
+            {
+                "soru": 15,
+                "durum": "YANLIŞ"
+            },
+            {
+                "soru": 16,
+                "durum": "YANLIŞ"
+            },
+            {
+                "soru": 17,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 18,
+                "durum": "YANLIŞ"
+            },
+            {
+                "soru": 19,
+                "durum": "YANLIŞ"
+            },
+            {
+                "soru": 20,
+                "durum": "YANLIŞ"
+            }
+        ]
+    },
+    "349": {
+        "name": "ECRİN ERVA KAYAHAN",
+        "student_no": 349,
+        "totals": {
+            "dogru": 14,
+            "yanlis": 6,
+            "net": 14
+        },
+        "answers": [
+            {
+                "soru": 1,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 2,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 3,
+                "durum": "YANLIŞ"
+            },
+            {
+                "soru": 4,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 5,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 6,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 7,
+                "durum": "YANLIŞ"
+            },
+            {
+                "soru": 8,
+                "durum": "YANLIŞ"
+            },
+            {
+                "soru": 9,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 10,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 11,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 12,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 13,
+                "durum": "YANLIŞ"
+            },
+            {
+                "soru": 14,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 15,
+                "durum": "YANLIŞ"
+            },
+            {
+                "soru": 16,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 17,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 18,
+                "durum": "YANLIŞ"
+            },
+            {
+                "soru": 19,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 20,
+                "durum": "DOĞRU"
+            }
+        ]
+    },
+    "646": {
+        "name": "ECRİN GÜLTEKİN ",
+        "student_no": 646,
+        "totals": {
+            "dogru": 9,
+            "yanlis": 11,
+            "net": 9
+        },
+        "answers": [
+            {
+                "soru": 1,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 2,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 3,
+                "durum": "YANLIŞ"
+            },
+            {
+                "soru": 4,
+                "durum": "YANLIŞ"
+            },
+            {
+                "soru": 5,
+                "durum": "YANLIŞ"
+            },
+            {
+                "soru": 6,
+                "durum": "YANLIŞ"
+            },
+            {
+                "soru": 7,
+                "durum": "YANLIŞ"
+            },
+            {
+                "soru": 8,
+                "durum": "YANLIŞ"
+            },
+            {
+                "soru": 9,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 10,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 11,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 12,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 13,
+                "durum": "YANLIŞ"
+            },
+            {
+                "soru": 14,
+                "durum": "YANLIŞ"
+            },
+            {
+                "soru": 15,
+                "durum": "YANLIŞ"
+            },
+            {
+                "soru": 16,
+                "durum": "YANLIŞ"
+            },
+            {
+                "soru": 17,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 18,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 19,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 20,
+                "durum": "YANLIŞ"
+            }
+        ]
+    },
+    "347": {
+        "name": "ELİF FEYZA TÜRKBEN ",
+        "student_no": 347,
+        "totals": {
+            "dogru": 14,
+            "yanlis": 6,
+            "net": 14
+        },
+        "answers": [
+            {
+                "soru": 1,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 2,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 3,
+                "durum": "YANLIŞ"
+            },
+            {
+                "soru": 4,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 5,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 6,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 7,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 8,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 9,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 10,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 11,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 12,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 13,
+                "durum": "YANLIŞ"
+            },
+            {
+                "soru": 14,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 15,
+                "durum": "YANLIŞ"
+            },
+            {
+                "soru": 16,
+                "durum": "YANLIŞ"
+            },
+            {
+                "soru": 17,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 18,
+                "durum": "YANLIŞ"
+            },
+            {
+                "soru": 19,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 20,
+                "durum": "YANLIŞ"
+            }
+        ]
+    },
+    "331": {
+        "name": "ELİF NAS AKBAŞ",
+        "student_no": 331,
+        "totals": {
+            "dogru": 12,
+            "yanlis": 8,
+            "net": 12
+        },
+        "answers": [
+            {
+                "soru": 1,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 2,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 3,
+                "durum": "YANLIŞ"
+            },
+            {
+                "soru": 4,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 5,
+                "durum": "YANLIŞ"
+            },
+            {
+                "soru": 6,
+                "durum": "YANLIŞ"
+            },
+            {
+                "soru": 7,
+                "durum": "YANLIŞ"
+            },
+            {
+                "soru": 8,
+                "durum": "YANLIŞ"
+            },
+            {
+                "soru": 9,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 10,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 11,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 12,
+                "durum": "YANLIŞ"
+            },
+            {
+                "soru": 13,
+                "durum": "YANLIŞ"
+            },
+            {
+                "soru": 14,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 15,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 16,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 17,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 18,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 19,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 20,
+                "durum": "YANLIŞ"
+            }
+        ]
+    },
+    "14": {
+        "name": "ELİF RANA İŞLEK",
+        "student_no": 14,
+        "totals": {
+            "dogru": 16,
+            "yanlis": 4,
+            "net": 16
+        },
+        "answers": [
+            {
+                "soru": 1,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 2,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 3,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 4,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 5,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 6,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 7,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 8,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 9,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 10,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 11,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 12,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 13,
+                "durum": "YANLIŞ"
+            },
+            {
+                "soru": 14,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 15,
+                "durum": "YANLIŞ"
+            },
+            {
+                "soru": 16,
+                "durum": "YANLIŞ"
+            },
+            {
+                "soru": 17,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 18,
+                "durum": "YANLIŞ"
+            },
+            {
+                "soru": 19,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 20,
+                "durum": "DOĞRU"
+            }
+        ]
+    },
+    "718": {
+        "name": "ERVA NUR KIRDAR",
+        "student_no": 718,
+        "totals": {
+            "dogru": 11,
+            "yanlis": 9,
+            "net": 11
+        },
+        "answers": [
+            {
+                "soru": 1,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 2,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 3,
+                "durum": "YANLIŞ"
+            },
+            {
+                "soru": 4,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 5,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 6,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 7,
+                "durum": "YANLIŞ"
+            },
+            {
+                "soru": 8,
+                "durum": "YANLIŞ"
+            },
+            {
+                "soru": 9,
+                "durum": "YANLIŞ"
+            },
+            {
+                "soru": 10,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 11,
+                "durum": "YANLIŞ"
+            },
+            {
+                "soru": 12,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 13,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 14,
+                "durum": "YANLIŞ"
+            },
+            {
+                "soru": 15,
+                "durum": "YANLIŞ"
+            },
+            {
+                "soru": 16,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 17,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 18,
+                "durum": "YANLIŞ"
+            },
+            {
+                "soru": 19,
+                "durum": "YANLIŞ"
+            },
+            {
+                "soru": 20,
+                "durum": "DOĞRU"
+            }
+        ]
+    },
+    "751": {
+        "name": "ESMANUR TANRIVERDİ",
+        "student_no": 751,
+        "totals": {
+            "dogru": 13,
+            "yanlis": 7,
+            "net": 13
+        },
+        "answers": [
+            {
+                "soru": 1,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 2,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 3,
+                "durum": "YANLIŞ"
+            },
+            {
+                "soru": 4,
+                "durum": "YANLIŞ"
+            },
+            {
+                "soru": 5,
+                "durum": "YANLIŞ"
+            },
+            {
+                "soru": 6,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 7,
+                "durum": "YANLIŞ"
+            },
+            {
+                "soru": 8,
+                "durum": "YANLIŞ"
+            },
+            {
+                "soru": 9,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 10,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 11,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 12,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 13,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 14,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 15,
+                "durum": "YANLIŞ"
+            },
+            {
+                "soru": 16,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 17,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 18,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 19,
+                "durum": "YANLIŞ"
+            },
+            {
+                "soru": 20,
+                "durum": "DOĞRU"
+            }
+        ]
+    },
+    "19": {
+        "name": "ESİLA SU KOCAKAYA",
+        "student_no": 19,
+        "totals": {
+            "dogru": 14,
+            "yanlis": 6,
+            "net": 14
+        },
+        "answers": [
+            {
+                "soru": 1,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 2,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 3,
+                "durum": "YANLIŞ"
+            },
+            {
+                "soru": 4,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 5,
+                "durum": "YANLIŞ"
+            },
+            {
+                "soru": 6,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 7,
+                "durum": "YANLIŞ"
+            },
+            {
+                "soru": 8,
+                "durum": "YANLIŞ"
+            },
+            {
+                "soru": 9,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 10,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 11,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 12,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 13,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 14,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 15,
+                "durum": "YANLIŞ"
+            },
+            {
+                "soru": 16,
+                "durum": "YANLIŞ"
+            },
+            {
+                "soru": 17,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 18,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 19,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 20,
+                "durum": "DOĞRU"
+            }
+        ]
+    },
+    "310": {
+        "name": "HAVVA AYZA CAŞTUR",
+        "student_no": 310,
+        "totals": {
+            "dogru": 14,
+            "yanlis": 6,
+            "net": 14
+        },
+        "answers": [
+            {
+                "soru": 1,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 2,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 3,
+                "durum": "YANLIŞ"
+            },
+            {
+                "soru": 4,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 5,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 6,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 7,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 8,
+                "durum": "YANLIŞ"
+            },
+            {
+                "soru": 9,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 10,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 11,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 12,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 13,
+                "durum": "YANLIŞ"
+            },
+            {
+                "soru": 14,
+                "durum": "YANLIŞ"
+            },
+            {
+                "soru": 15,
+                "durum": "YANLIŞ"
+            },
+            {
+                "soru": 16,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 17,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 18,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 19,
+                "durum": "YANLIŞ"
+            },
+            {
+                "soru": 20,
+                "durum": "DOĞRU"
+            }
+        ]
+    },
+    "83": {
+        "name": "KEVSER AKÖZ",
+        "student_no": 83,
+        "totals": {
+            "dogru": 10,
+            "yanlis": 10,
+            "net": 10
+        },
+        "answers": [
+            {
+                "soru": 1,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 2,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 3,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 4,
+                "durum": "YANLIŞ"
+            },
+            {
+                "soru": 5,
+                "durum": "YANLIŞ"
+            },
+            {
+                "soru": 6,
+                "durum": "YANLIŞ"
+            },
+            {
+                "soru": 7,
+                "durum": "YANLIŞ"
+            },
+            {
+                "soru": 8,
+                "durum": "YANLIŞ"
+            },
+            {
+                "soru": 9,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 10,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 11,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 12,
+                "durum": "YANLIŞ"
+            },
+            {
+                "soru": 13,
+                "durum": "YANLIŞ"
+            },
+            {
+                "soru": 14,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 15,
+                "durum": "YANLIŞ"
+            },
+            {
+                "soru": 16,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 17,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 18,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 19,
+                "durum": "YANLIŞ"
+            },
+            {
+                "soru": 20,
+                "durum": "YANLIŞ"
+            }
+        ]
+    },
+    "30": {
+        "name": "MAİDE DUMAN",
+        "student_no": 30,
+        "totals": {
+            "dogru": 15,
+            "yanlis": 5,
+            "net": 15
+        },
+        "answers": [
+            {
+                "soru": 1,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 2,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 3,
+                "durum": "YANLIŞ"
+            },
+            {
+                "soru": 4,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 5,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 6,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 7,
+                "durum": "YANLIŞ"
+            },
+            {
+                "soru": 8,
+                "durum": "YANLIŞ"
+            },
+            {
+                "soru": 9,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 10,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 11,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 12,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 13,
+                "durum": "YANLIŞ"
+            },
+            {
+                "soru": 14,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 15,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 16,
+                "durum": "YANLIŞ"
+            },
+            {
+                "soru": 17,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 18,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 19,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 20,
+                "durum": "DOĞRU"
+            }
+        ]
+    },
+    "334": {
+        "name": "MERYEM NİSA ŞAHİN ",
+        "student_no": 334,
+        "totals": {
+            "dogru": 15,
+            "yanlis": 5,
+            "net": 15
+        },
+        "answers": [
+            {
+                "soru": 1,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 2,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 3,
+                "durum": "YANLIŞ"
+            },
+            {
+                "soru": 4,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 5,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 6,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 7,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 8,
+                "durum": "YANLIŞ"
+            },
+            {
+                "soru": 9,
+                "durum": "YANLIŞ"
+            },
+            {
+                "soru": 10,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 11,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 12,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 13,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 14,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 15,
+                "durum": "YANLIŞ"
+            },
+            {
+                "soru": 16,
+                "durum": "YANLIŞ"
+            },
+            {
+                "soru": 17,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 18,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 19,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 20,
+                "durum": "DOĞRU"
+            }
+        ]
+    },
+    "35": {
+        "name": "NİSANUR YILMAZ",
+        "student_no": 35,
+        "totals": {
+            "dogru": 6,
+            "yanlis": 14,
+            "net": 6
+        },
+        "answers": [
+            {
+                "soru": 1,
+                "durum": "YANLIŞ"
+            },
+            {
+                "soru": 2,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 3,
+                "durum": "YANLIŞ"
+            },
+            {
+                "soru": 4,
+                "durum": "YANLIŞ"
+            },
+            {
+                "soru": 5,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 6,
+                "durum": "YANLIŞ"
+            },
+            {
+                "soru": 7,
+                "durum": "YANLIŞ"
+            },
+            {
+                "soru": 8,
+                "durum": "YANLIŞ"
+            },
+            {
+                "soru": 9,
+                "durum": "YANLIŞ"
+            },
+            {
+                "soru": 10,
+                "durum": "YANLIŞ"
+            },
+            {
+                "soru": 11,
+                "durum": "YANLIŞ"
+            },
+            {
+                "soru": 12,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 13,
+                "durum": "YANLIŞ"
+            },
+            {
+                "soru": 14,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 15,
+                "durum": "YANLIŞ"
+            },
+            {
+                "soru": 16,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 17,
+                "durum": "YANLIŞ"
+            },
+            {
+                "soru": 18,
+                "durum": "YANLIŞ"
+            },
+            {
+                "soru": 19,
+                "durum": "YANLIŞ"
+            },
+            {
+                "soru": 20,
+                "durum": "DOĞRU"
+            }
+        ]
+    },
+    "337": {
+        "name": "RABİA RANA KOCATÜRK ",
+        "student_no": 337,
+        "totals": {
+            "dogru": 15,
+            "yanlis": 5,
+            "net": 15
+        },
+        "answers": [
+            {
+                "soru": 1,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 2,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 3,
+                "durum": "YANLIŞ"
+            },
+            {
+                "soru": 4,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 5,
+                "durum": "YANLIŞ"
+            },
+            {
+                "soru": 6,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 7,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 8,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 9,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 10,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 11,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 12,
+                "durum": "YANLIŞ"
+            },
+            {
+                "soru": 13,
+                "durum": "YANLIŞ"
+            },
+            {
+                "soru": 14,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 15,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 16,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 17,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 18,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 19,
+                "durum": "YANLIŞ"
+            },
+            {
+                "soru": 20,
+                "durum": "DOĞRU"
+            }
+        ]
+    },
+    "39": {
+        "name": "SEMANUR HOCAOĞLU",
+        "student_no": 39,
+        "totals": {
+            "dogru": 13,
+            "yanlis": 7,
+            "net": 13
+        },
+        "answers": [
+            {
+                "soru": 1,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 2,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 3,
+                "durum": "YANLIŞ"
+            },
+            {
+                "soru": 4,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 5,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 6,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 7,
+                "durum": "YANLIŞ"
+            },
+            {
+                "soru": 8,
+                "durum": "YANLIŞ"
+            },
+            {
+                "soru": 9,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 10,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 11,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 12,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 13,
+                "durum": "YANLIŞ"
+            },
+            {
+                "soru": 14,
+                "durum": "YANLIŞ"
+            },
+            {
+                "soru": 15,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 16,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 17,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 18,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 19,
+                "durum": "YANLIŞ"
+            },
+            {
+                "soru": 20,
+                "durum": "YANLIŞ"
+            }
+        ]
+    },
+    "353": {
+        "name": "SENANUR ASLAN",
+        "student_no": 353,
+        "totals": {
+            "dogru": 11,
+            "yanlis": 9,
+            "net": 11
+        },
+        "answers": [
+            {
+                "soru": 1,
+                "durum": "YANLIŞ"
+            },
+            {
+                "soru": 2,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 3,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 4,
+                "durum": "YANLIŞ"
+            },
+            {
+                "soru": 5,
+                "durum": "YANLIŞ"
+            },
+            {
+                "soru": 6,
+                "durum": "YANLIŞ"
+            },
+            {
+                "soru": 7,
+                "durum": "YANLIŞ"
+            },
+            {
+                "soru": 8,
+                "durum": "YANLIŞ"
+            },
+            {
+                "soru": 9,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 10,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 11,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 12,
+                "durum": "YANLIŞ"
+            },
+            {
+                "soru": 13,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 14,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 15,
+                "durum": "YANLIŞ"
+            },
+            {
+                "soru": 16,
+                "durum": "YANLIŞ"
+            },
+            {
+                "soru": 17,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 18,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 19,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 20,
+                "durum": "DOĞRU"
+            }
+        ]
+    },
+    "332": {
+        "name": "TUSEM ZEHRA SEVİNÇ ",
+        "student_no": 332,
+        "totals": {
+            "dogru": 15,
+            "yanlis": 5,
+            "net": 15
+        },
+        "answers": [
+            {
+                "soru": 1,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 2,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 3,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 4,
+                "durum": "YANLIŞ"
+            },
+            {
+                "soru": 5,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 6,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 7,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 8,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 9,
+                "durum": "YANLIŞ"
+            },
+            {
+                "soru": 10,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 11,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 12,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 13,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 14,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 15,
+                "durum": "YANLIŞ"
+            },
+            {
+                "soru": 16,
+                "durum": "YANLIŞ"
+            },
+            {
+                "soru": 17,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 18,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 19,
+                "durum": "YANLIŞ"
+            },
+            {
+                "soru": 20,
+                "durum": "DOĞRU"
+            }
+        ]
+    },
+    "53": {
+        "name": "YAREN SU AYLUÇTARHAN",
+        "student_no": 53,
+        "totals": {
+            "dogru": 14,
+            "yanlis": 6,
+            "net": 14
+        },
+        "answers": [
+            {
+                "soru": 1,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 2,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 3,
+                "durum": "YANLIŞ"
+            },
+            {
+                "soru": 4,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 5,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 6,
+                "durum": "YANLIŞ"
+            },
+            {
+                "soru": 7,
+                "durum": "YANLIŞ"
+            },
+            {
+                "soru": 8,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 9,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 10,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 11,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 12,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 13,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 14,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 15,
+                "durum": "YANLIŞ"
+            },
+            {
+                "soru": 16,
+                "durum": "YANLIŞ"
+            },
+            {
+                "soru": 17,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 18,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 19,
+                "durum": "YANLIŞ"
+            },
+            {
+                "soru": 20,
+                "durum": "DOĞRU"
+            }
+        ]
+    },
+    "645": {
+        "name": "ZELAL ÖZDANIR",
+        "student_no": 645,
+        "totals": {
+            "dogru": 15,
+            "yanlis": 5,
+            "net": 15
+        },
+        "answers": [
+            {
+                "soru": 1,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 2,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 3,
+                "durum": "YANLIŞ"
+            },
+            {
+                "soru": 4,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 5,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 6,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 7,
+                "durum": "YANLIŞ"
+            },
+            {
+                "soru": 8,
+                "durum": "YANLIŞ"
+            },
+            {
+                "soru": 9,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 10,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 11,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 12,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 13,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 14,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 15,
+                "durum": "YANLIŞ"
+            },
+            {
+                "soru": 16,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 17,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 18,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 19,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 20,
+                "durum": "YANLIŞ"
+            }
+        ]
+    },
+    "757": {
+        "name": "HAYRUNNİSA SÖNMEZ",
+        "student_no": 757,
+        "totals": {
+            "dogru": 14,
+            "yanlis": 6,
+            "net": 14
+        },
+        "answers": [
+            {
+                "soru": 1,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 2,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 3,
+                "durum": "YANLIŞ"
+            },
+            {
+                "soru": 4,
+                "durum": "YANLIŞ"
+            },
+            {
+                "soru": 5,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 6,
+                "durum": "YANLIŞ"
+            },
+            {
+                "soru": 7,
+                "durum": "YANLIŞ"
+            },
+            {
+                "soru": 8,
+                "durum": "YANLIŞ"
+            },
+            {
+                "soru": 9,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 10,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 11,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 12,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 13,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 14,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 15,
+                "durum": "YANLIŞ"
+            },
+            {
+                "soru": 16,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 17,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 18,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 19,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 20,
+                "durum": "DOĞRU"
+            }
+        ]
+    },
+    "739": {
+        "name": "ZEYNEP AYŞE TAŞEL",
+        "student_no": 739,
+        "totals": {
+            "dogru": 15,
+            "yanlis": 5,
+            "net": 15
+        },
+        "answers": [
+            {
+                "soru": 1,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 2,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 3,
+                "durum": "YANLIŞ"
+            },
+            {
+                "soru": 4,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 5,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 6,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 7,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 8,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 9,
+                "durum": "YANLIŞ"
+            },
+            {
+                "soru": 10,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 11,
+                "durum": "YANLIŞ"
+            },
+            {
+                "soru": 12,
+                "durum": "YANLIŞ"
+            },
+            {
+                "soru": 13,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 14,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 15,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 16,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 17,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 18,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 19,
+                "durum": "YANLIŞ"
+            },
+            {
+                "soru": 20,
+                "durum": "DOĞRU"
+            }
+        ]
+    },
+    "737": {
+        "name": "SÜMEYYE ERVA UÇAR",
+        "student_no": 737,
+        "totals": {
+            "dogru": 14,
+            "yanlis": 6,
+            "net": 14
+        },
+        "answers": [
+            {
+                "soru": 1,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 2,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 3,
+                "durum": "YANLIŞ"
+            },
+            {
+                "soru": 4,
+                "durum": "YANLIŞ"
+            },
+            {
+                "soru": 5,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 6,
+                "durum": "YANLIŞ"
+            },
+            {
+                "soru": 7,
+                "durum": "YANLIŞ"
+            },
+            {
+                "soru": 8,
+                "durum": "YANLIŞ"
+            },
+            {
+                "soru": 9,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 10,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 11,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 12,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 13,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 14,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 15,
+                "durum": "YANLIŞ"
+            },
+            {
+                "soru": 16,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 17,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 18,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 19,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 20,
+                "durum": "DOĞRU"
+            }
+        ]
+    },
+    "740": {
+        "name": "ZEYNEP BERRA KAHVECİ",
+        "student_no": 740,
+        "totals": {
+            "dogru": 9,
+            "yanlis": 11,
+            "net": 9
+        },
+        "answers": [
+            {
+                "soru": 1,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 2,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 3,
+                "durum": "YANLIŞ"
+            },
+            {
+                "soru": 4,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 5,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 6,
+                "durum": "YANLIŞ"
+            },
+            {
+                "soru": 7,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 8,
+                "durum": "YANLIŞ"
+            },
+            {
+                "soru": 9,
+                "durum": "YANLIŞ"
+            },
+            {
+                "soru": 10,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 11,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 12,
+                "durum": "YANLIŞ"
+            },
+            {
+                "soru": 13,
+                "durum": "YANLIŞ"
+            },
+            {
+                "soru": 14,
+                "durum": "YANLIŞ"
+            },
+            {
+                "soru": 15,
+                "durum": "YANLIŞ"
+            },
+            {
+                "soru": 16,
+                "durum": "YANLIŞ"
+            },
+            {
+                "soru": 17,
+                "durum": "YANLIŞ"
+            },
+            {
+                "soru": 18,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 19,
+                "durum": "YANLIŞ"
+            },
+            {
+                "soru": 20,
+                "durum": "DOĞRU"
+            }
+        ]
+    },
+    "339": {
+        "name": "HAYRRUNNİSA ERTUĞ",
+        "student_no": 339,
+        "totals": {
+            "dogru": 11,
+            "yanlis": 9,
+            "net": 11
+        },
+        "answers": [
+            {
+                "soru": 1,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 2,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 3,
+                "durum": "YANLIŞ"
+            },
+            {
+                "soru": 4,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 5,
+                "durum": "YANLIŞ"
+            },
+            {
+                "soru": 6,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 7,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 8,
+                "durum": "YANLIŞ"
+            },
+            {
+                "soru": 9,
+                "durum": "YANLIŞ"
+            },
+            {
+                "soru": 10,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 11,
+                "durum": "YANLIŞ"
+            },
+            {
+                "soru": 12,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 13,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 14,
+                "durum": "YANLIŞ"
+            },
+            {
+                "soru": 15,
+                "durum": "YANLIŞ"
+            },
+            {
+                "soru": 16,
+                "durum": "YANLIŞ"
+            },
+            {
+                "soru": 17,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 18,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 19,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 20,
+                "durum": "YANLIŞ"
+            }
+        ]
+    },
+    "341": {
+        "name": "HİRANUR ÖZEN",
+        "student_no": 341,
+        "totals": {
+            "dogru": 10,
+            "yanlis": 10,
+            "net": 10
+        },
+        "answers": [
+            {
+                "soru": 1,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 2,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 3,
+                "durum": "YANLIŞ"
+            },
+            {
+                "soru": 4,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 5,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 6,
+                "durum": "YANLIŞ"
+            },
+            {
+                "soru": 7,
+                "durum": "YANLIŞ"
+            },
+            {
+                "soru": 8,
+                "durum": "YANLIŞ"
+            },
+            {
+                "soru": 9,
+                "durum": "YANLIŞ"
+            },
+            {
+                "soru": 10,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 11,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 12,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 13,
+                "durum": "YANLIŞ"
+            },
+            {
+                "soru": 14,
+                "durum": "YANLIŞ"
+            },
+            {
+                "soru": 15,
+                "durum": "YANLIŞ"
+            },
+            {
+                "soru": 16,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 17,
+                "durum": "YANLIŞ"
+            },
+            {
+                "soru": 18,
+                "durum": "YANLIŞ"
+            },
+            {
+                "soru": 19,
+                "durum": "DOĞRU"
+            },
+            {
+                "soru": 20,
+                "durum": "DOĞRU"
+            }
+        ]
+    }
+};
+
+function fetchStudentData() {
+    const studentNo = document.getElementById("studentNoInput").value;
+    const data = studentData[studentNo];
+    if (data) {
+        let answerRows = '';
+        for (let answer of data.answers) {
+            let answerClass = '';
+            if (answer.durum === 'DOĞRU') {
+                answerClass = 'correct-answer';
+            } else if (answer.durum === 'YANLIŞ') {
+                answerClass = 'wrong-answer';
+            } else if (answer.durum === 'BOŞ') {
+                answerClass = 'empty-answer';
+            }
+
+            answerRows += `
+                <tr>
+                    <td class="question-cell">${answer.soru}. SORU</td>
+                    <td colspan="2" class="${answerClass}">${answer.durum}</td>
+                </tr>
+            `;
+        }
+
+        document.getElementById("studentData").innerHTML = `
+            <table class="result-table">
+                <tr>
+                    <th colspan="3">ÖĞRENCİ ADI</th>
+                </tr>
+                <tr>
+                    <td colspan="3">${data.name}</td>
+                </tr>
+                <tr>
+                    <th colspan="3">ÖĞRENCİ NO</th>
+                </tr>
+                <tr>
+                    <td colspan="3">${data.student_no}</td>
+                </tr>
+                <tr class="category">
+                    <th>DOĞRU</th>
+                    <th>YANLIŞ</th>
+                    <th>NET</th>
+                </tr>
+                <tr>
+                    <td>${data.totals.dogru}</td>
+                    <td>${data.totals.yanlis}</td>
+                    <td>${data.totals.net}</td>
+                </tr>
+                <tr class="category">
+                    <th>SORU</th>
+                    <th colspan="2">DURUM</th>
+                </tr>
+                ${answerRows}
+            </table>
+        `;
+    } else {
+        document.getElementById("studentData").innerHTML = "<p>Öğrenci bulunamadı.</p>";
+    }
+}
+
+
+    </script>
+</body>
+</html>
